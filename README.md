@@ -1,25 +1,12 @@
-# Sticker Bot para WhatsApp
+# Sticker Maker para WhatsApp
 
-Bot em Node.js que transforma imagens, vídeos e GIFs enviados no WhatsApp em figurinhas estáticas ou animadas.
+Aplicação web e bot em Node.js para transformar imagens, GIFs e vídeos em figurinhas WebP.
 
-## Recursos
+## Criador online
 
-- Imagem com `!s` ou `!sticker` → figurinha WebP
-- Vídeo/GIF curto com `!s` → figurinha animada
-- Aceita mídia enviada com legenda ou respondida
-- QR Code no terminal
-- Limite configurável de duração e tamanho
-- Sessão salva localmente em `auth/`
-- Dockerfile incluído
+### Executar localmente
 
-> Este projeto usa Baileys, uma biblioteca não oficial para o WhatsApp Web. Use uma conta separada para testes e respeite os termos do WhatsApp.
-
-## Requisitos
-
-- Node.js 20 ou superior
-- FFmpeg instalado e disponível no PATH
-
-## Instalação
+Requisitos: Node.js 20+ e FFmpeg no PATH.
 
 ```bash
 git clone https://github.com/Gavloski/figurinhas.git
@@ -29,37 +16,57 @@ cp .env.example .env
 npm start
 ```
 
-No Windows, instale o FFmpeg e adicione-o ao PATH. Depois, leia o QR Code exibido no terminal em **WhatsApp > Aparelhos conectados > Conectar um aparelho**.
+Abra `http://localhost:3000`. Se estiver no Windows, use `copy .env.example .env`.
 
-## Como usar
+### Funcionalidades
 
-1. Envie uma imagem com a legenda `!s`.
-2. Envie um vídeo ou GIF de até 10 segundos com a legenda `!s`.
-3. Ou responda a uma imagem/vídeo/GIF com `!s`.
-4. Use `!ajuda` para ver os comandos.
+- Upload por clique ou arrastar e soltar
+- Imagens PNG, JPG e WebP
+- GIFs e vídeos MP4, WebM e MOV
+- Nome do pacote e autor personalizáveis
+- Download automático em `.webp`
+- Interface adaptada para celular e computador
+- Limite padrão de 20 MB
+
+## Bot do WhatsApp
+
+O bot por QR Code continua disponível:
+
+```bash
+npm run bot
+```
+
+Comandos: `!s`, `!sticker`, `!figurinha` e `!ajuda`.
+
+> O bot usa Baileys, uma integração não oficial com o WhatsApp Web. Teste com uma conta secundária e respeite os termos do WhatsApp.
+
+## Docker
+
+```bash
+cp .env.example .env
+docker compose up --build
+```
+
+Depois, abra `http://localhost:3000`.
+
+## Hospedagem
+
+A hospedagem precisa aceitar Node.js, armazenamento temporário em memória e FFmpeg. Serviços somente estáticos, como GitHub Pages, não executam a conversão de vídeos/GIFs.
+
+Configure:
+
+- Comando de build: `npm install`
+- Comando de início: `npm start`
+- Porta: variável `PORT`
+- FFmpeg: disponível no ambiente ou usando o Dockerfile
 
 ## Configuração
 
-Edite o arquivo `.env`:
-
 ```env
+PORT=3000
 PREFIX=!
 STICKER_PACK=Gavloski
 STICKER_AUTHOR=Sticker Bot
 MAX_VIDEO_SECONDS=10
 MAX_FILE_MB=20
 ```
-
-## Docker
-
-```bash
-docker compose up --build
-```
-
-A pasta `auth` fica persistida para evitar a leitura do QR Code a cada reinício.
-
-## Observações
-
-- Figurinhas animadas ficam sem áudio, como exigido pelo formato.
-- Vídeos longos devem ser cortados antes do envio.
-- Não publique a pasta `auth/`: ela contém as credenciais da sessão.
