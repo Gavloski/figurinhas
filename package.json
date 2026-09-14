@@ -1,0 +1,24 @@
+{
+  "name": "whatsapp-sticker-bot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bot para criar figurinhas estáticas e animadas no WhatsApp",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "check": "node --check src/index.js && node --check src/media.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.7.18",
+    "dotenv": "^16.4.7",
+    "file-type": "^19.6.0",
+    "pino": "^9.6.0",
+    "qrcode-terminal": "^0.12.0",
+    "wa-sticker-formatter": "^4.4.4"
+  }
+}
