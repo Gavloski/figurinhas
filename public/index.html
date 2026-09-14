@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101412">
+  <title>Sticker Maker — Crie figurinhas para WhatsApp</title>
+  <meta name="description" content="Transforme imagens, GIFs e vídeos em figurinhas para WhatsApp.">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <a class="brand" href="/" aria-label="Sticker Maker">
+        <span class="logo">✦</span>
+        <span>STICKER<br>MAKER</span>
+      </a>
+      <span class="pill"><i></i> ONLINE</span>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow">CRIADOR ONLINE PARA WHATSAPP</div>
+      <h1>Sua imagem.<br><em>Sua figurinha.</em></h1>
+      <p>Transforme fotos, GIFs e vídeos curtos em figurinhas prontas para compartilhar.</p>
+    </section>
+
+    <section class="maker">
+      <form id="stickerForm">
+        <label class="dropzone" id="dropzone" for="media">
+          <input id="media" name="media" type="file" accept="image/png,image/jpeg,image/webp,image/gif,video/mp4,video/webm,video/quicktime" required>
+          <div id="emptyState">
+            <span class="upload-icon">↥</span>
+            <strong>Solte seu arquivo aqui</strong>
+            <small>ou clique para selecionar</small>
+            <span class="formats">PNG · JPG · WEBP · GIF · MP4 · WEBM</span>
+          </div>
+          <div class="preview-wrap" id="previewWrap" hidden>
+            <img id="imagePreview" alt="Pré-visualização" hidden>
+            <video id="videoPreview" muted loop playsinline hidden></video>
+            <button class="change" type="button" id="changeFile">Trocar arquivo</button>
+          </div>
+        </label>
+
+        <div class="fields">
+          <label>Nome do pacote<input name="pack" maxlength="40" value="Gavloski"></label>
+          <label>Autor<input name="author" maxlength="40" value="Sticker Maker"></label>
+        </div>
+
+        <button class="create" type="submit" id="submitButton">
+          <span>Criar figurinha</span><b>→</b>
+        </button>
+        <p class="status" id="status" role="status"></p>
+      </form>
+
+      <aside>
+        <div class="step"><b>01</b><span><strong>Escolha</strong><small>Imagem, GIF ou vídeo curto</small></span></div>
+        <div class="step"><b>02</b><span><strong>Personalize</strong><small>Defina o pacote e o autor</small></span></div>
+        <div class="step"><b>03</b><span><strong>Baixe</strong><small>Receba o arquivo em WebP</small></span></div>
+        <div class="note">Arquivos de até 20 MB. Figurinhas animadas são geradas sem áudio.</div>
+      </aside>
+    </section>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>
